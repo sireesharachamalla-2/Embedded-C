@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+        int n,n2;
+        printf("enter number of elements in ana array\n");
+        scanf("%d",&n);
+        int *ptr=(int *)malloc(n*sizeof(int));
+        if(ptr==NULL)
+        {
+                printf("memory not allocated\n");
+                return 1;
+        }
+
+        for(int i=0;i<n;i++)
+        {
+                scanf("%d",ptr+i);
+        }
+
+        for(int i=0;i<n;i++)
+        {
+                printf("%d ",*(ptr+i));
+        }
+        printf("enter number of elements to add\n");
+        scanf("%d",&n2);
+        ptr=(int *)realloc(ptr,n2*sizeof(int));
+        printf("after reallocation of memory %d\n",n2-n);
+        for(int i=n;i<n2;i++)
+        {
+                scanf("%d",ptr+i);
+        }
+        for(int i=0;i<n2;i++)
+        {
+                printf("%d ",*(ptr+i));
+        }
+        free(ptr);
+        return 0;
+}
